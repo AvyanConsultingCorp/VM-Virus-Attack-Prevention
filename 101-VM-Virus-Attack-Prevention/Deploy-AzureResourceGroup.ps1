@@ -12,12 +12,12 @@ Param(
 
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -Force
 
-$Password = Read-Host -Prompt 'Enter password for VM'
+$Password = Read-Host -Prompt 'Enter password for VM' -AsSecureString
 
 $tmp = [System.IO.Path]::GetTempFileName()
 
 $parametersObj = Get-Content -Path $TemplateParametersFile | ConvertFrom-Json
-$parametersObj.parameters.adminUserPassword.value = $Password
+$parametersObj.parameters.adminUserPassword.value = (New-Object PSCredential "user",$Password).GetNetworkCredential().Password
 ( $parametersObj | ConvertTo-Json -Depth 10 ) -replace "\\u0027", "'" | Out-File $tmp
 
 #Initiate resource group deployment
