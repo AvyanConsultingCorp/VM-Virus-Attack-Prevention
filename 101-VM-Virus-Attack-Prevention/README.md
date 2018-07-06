@@ -1,9 +1,9 @@
 # Virus attack on Virtual Machines Scenario
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2FVM-Virus-Attack-Prevention%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/> 
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2FVM-Virus-Attack-Prevention%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/> 
 </a>
 
@@ -17,6 +17,7 @@
 6. [Detect Attack](#detect)
 7. [Respond/Mitigate](#mitigate)
 8. [Teardown Deployment](#teardown)
+9. [Configuration validation](#config)
 
 <a name="objectives"></a>
 # Objective of the POC 
@@ -127,8 +128,16 @@ To access endpoint protection client, you need to clean SCEP Policy on Windows w
 You will notice events related to Quarantined items. It might take few minutes for OMS to pull logs from virtual machine, so if you don't get any search results, please try again after sometime.
 
 
-    
+<a name="config"></a>
+## Configuration Validation
+* You can validate the specific configurations like Enabling Antivirus, Adding Antimalware Extension , Auto-updates on VM. These are covered as various controls along with Audit and Remediation procedure in Cloudneeti
+
+* Cloudneeti is available on the Azure marketplace. Try out the free test drive here https://aka.ms/Cloudneeti 
+
 References -
+
+
+##### References -
 
 http://www.eicar.org/
 

@@ -4,7 +4,7 @@
     "parameters": {
       "_artifactsLocation": {
         "type": "string",
-        "defaultValue": "https://raw.githubusercontent.com/AvyanConsultingCorp/VM-Virus-Attack-Prevention/master/101-VM-Virus-Attack-Prevention",
+        "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-VM-Virus-Attack-Prevention",
         "metadata": {
           "description": "this will be the location for artifacts"
         }
@@ -89,7 +89,7 @@
       },
       "vmNamePrefix": {
         "type": "string",
-        "defaultValue": "attacked-vm",
+        "defaultValue": "vm",
         "metadata": {
           "description": "this will be the prefix used for the VM name"
         }
@@ -104,6 +104,12 @@
         "type": "securestring",
         "metadata": {
           "description": "this will be the password of the user created on the user"
+        }
+      },
+      "uniqueStringForPublicIP": {
+        "type": "string",
+        "metadata": {
+          "description": "this will be the dns name used for public ip"
         }
       }
     },
@@ -255,7 +261,7 @@
               "value": "[parameters('pipAddressType')]"
             },
             "dnsNameForPublicIP": {
-              "value": "[concat(variables('vmNames')[copyIndex()],'-pip')]"
+              "value": "[concat(variables('vmNames')[copyIndex()],parameters('uniqueStringForPublicIP'),'-pip')]"
             },
             "location": {
               "value": "[parameters('location')]"
