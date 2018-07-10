@@ -13,8 +13,8 @@
 2. [Overview](#overview)
 3. [Pre-requisites](#prerequisites)
 4. [Perform Attack](#attack)
-5. [Detect Attack](#detect)
-6. [Respond/Mitigate](#mitigate)
+5. [Respond/Mitigate](#mitigate)
+6. [Detect Attack](#detect)
 7. [Configuration validation](#config)
 
 <a name="objectives"></a>
@@ -85,6 +85,7 @@ Azure Security Center gives you recommendations and also allows you to perform r
 3. Select your VM with name "vm-without-ep" and Click on Install on VM. This will install endpoint protection on the VM
 ![](images/install-endpoint-protection.png)
 
+<a name="detect"></a>
 # Attack & Detection
 
 Anti-malware Extension (Endpoint Protection) might take 5-10 mins to get installed on a VM. Hence, you will use another VM with name "vm-with-ep" which already has Anti-malware extension installed further for our Demo using loginid and pwd (The VM login username and password is in deployment powershell output)
