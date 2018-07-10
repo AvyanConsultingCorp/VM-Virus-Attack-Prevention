@@ -105,12 +105,6 @@
         "metadata": {
           "description": "this will be the password of the user created on the user"
         }
-      },
-      "uniqueStringForPublicIP": {
-        "type": "string",
-        "metadata": {
-          "description": "this will be the dns name used for public ip"
-        }
       }
     },
     "variables": {
@@ -261,7 +255,7 @@
               "value": "[parameters('pipAddressType')]"
             },
             "dnsNameForPublicIP": {
-              "value": "[concat(variables('vmNames')[copyIndex()],parameters('uniqueStringForPublicIP'),'-pip')]"
+              "value": "[concat(variables('vmNames')[copyIndex()],uniqueString(resourceGroup().id, 'pip'),'-pip')]"
             },
             "location": {
               "value": "[parameters('location')]"
