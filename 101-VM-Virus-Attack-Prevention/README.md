@@ -12,12 +12,10 @@
 1. [Objectives](#objectives)
 2. [Overview](#overview)
 3. [Pre-requisites](#prerequisites)
-4. [Deploy](#deployment)
-5. [Perform Attack](#attack)
-6. [Detect Attack](#detect)
-7. [Respond/Mitigate](#mitigate)
-8. [Teardown Deployment](#teardown)
-9. [Configuration validation](#config)
+4. [Perform Attack](#attack)
+5. [Detect Attack](#detect)
+6. [Respond/Mitigate](#mitigate)
+7. [Configuration validation](#config)
 
 <a name="objectives"></a>
 # Objective of the POC 
