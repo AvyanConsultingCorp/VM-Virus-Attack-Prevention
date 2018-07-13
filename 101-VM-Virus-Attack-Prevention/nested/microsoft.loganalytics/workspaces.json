@@ -90,7 +90,7 @@
                 "[parameters('omsWorkspaceName')]"
             ],
             "properties": {
-                "linkedResourceId": "[subscription().Id]"
+                "linkedResourceId": "[resourceId('microsoft.insights/eventTypes','management')]"
             }
         }
     ],
