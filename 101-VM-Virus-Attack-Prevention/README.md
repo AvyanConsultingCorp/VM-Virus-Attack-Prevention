@@ -16,10 +16,11 @@
 5. [Respond/Mitigate](#mitigate)
 6. [Detect Attack](#detect)
 7. [Configuration validation](#config)
+8. [Teardown Deployment](#teardown)
 
 <a name="objectives"></a>
 # Objective of the POC 
-Showcase a Virus attack on a Virtual Machine detection & prevention.
+This playbook demonstrates a mock virus attack against an unprotected VM resource using a benign test virus file designed to trigger antimalware tools.  After performing steps to protect the VM, the attack will be reattempted to show the protection operations. 
 
 <a name="overview"></a>
 # Overview
@@ -36,7 +37,7 @@ It showcases following use cases
 # Important Notes <a name="notes"></a>
 Although the deployment takes 10-15mins, the log aggregation by OMS take a few hours to get configured in the backend. You may not see attack/mitigation logs for detection and prevention events during the aggregation time window.   
 Subsequently logs will take 10-15 mins to reflect in OMS.
-<p>Current powershell version in Azure cloudshell is in preview mode.</p>
+
 
 
 <a name="prerequisites"></a>
@@ -61,7 +62,7 @@ Attack on VM without an Endpoint Protection.
 3. On Properties Page --> Click Connect to Download RDP file --> Save and Open RDP file.
 ![](images/access-vm-0.png)
 
-4. Enter login details (The VM login username and password is in deployment powershell output)
+4. Enter login details (The VM login username and password given during deployment)
 
 5. Open Server Manager and Disable Internet Explorer Enhanced Security Configuration.
 ![](images/disable-internet-explorer-enhanced-security-configuration.png)
@@ -88,7 +89,7 @@ Azure Security Center gives you recommendations and also allows you to perform r
 <a name="detect"></a>
 # Attack & Detection
 
-Anti-malware Extension (Endpoint Protection) might take 5-10 mins to get installed on a VM. Hence, you will use another VM with name "vm-with-ep" which already has Anti-malware extension installed further for our Demo using loginid and pwd (The VM login username and password is in deployment powershell output)
+Anti-malware Extension (Endpoint Protection) might take 5-10 mins to get installed on a VM. Hence, you will use another VM with name "vm-with-ep" which already has Anti-malware extension installed. Further for our demo login using credential given during deployment.
 
 To perform attack open Internet Explorer and Download (https://secure.eicar.org/eicar.com.txt)
 
@@ -133,14 +134,27 @@ You will notice events related to Quarantined items. It might take few minutes f
 
 * Cloudneeti is available on the Azure marketplace. Try out the free test drive here https://aka.ms/Cloudneeti 
 
+<a name="teardown"></a>
+## Teardown Deployment 
 
+Run following powershell command after login to subscription to clear all the resources deployed during the demo. Specify resource group name given during deployment
+ 
+ `Remove-AzureRmResourceGroup -Name <ResourceGroupName>  -Force `
+ 
+    
+Verification steps -
+1. Login to Azure Portal / Subscription
+2. Check if resource group name given during deployment is cleared.
+<p/>
 ##### References -
 
 http://www.eicar.org/
 
 https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware
 
-https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview
+https://docs.microsoft.com/en-us/azure/monitoring/
+
+
 
 
 ## Disclaimer & Acknowledgements 
