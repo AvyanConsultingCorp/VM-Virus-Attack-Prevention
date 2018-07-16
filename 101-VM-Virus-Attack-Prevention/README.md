@@ -146,6 +146,7 @@ Verification steps -
 1. Login to Azure Portal / Subscription
 2. Check if resource group name given during deployment is cleared.
 <p/>
+
 ##### References -
 
 http://www.eicar.org/
