@@ -1,9 +1,9 @@
 # Virus attack on Virtual Machines Scenario
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2FVM-Virus-Attack-Prevention%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2Fazure-quickstart-templates%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/> 
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2FVM-Virus-Attack-Prevention%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json"" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAvyanConsultingCorp%2Fazure-quickstart-templates%2Fmaster%2F101-VM-Virus-Attack-Prevention%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/> 
 </a>
 
@@ -16,11 +16,10 @@
 5. [Respond/Mitigate](#mitigate)
 6. [Detect Attack](#detect)
 7. [Configuration validation](#config)
-8. [Teardown Deployment](#teardown)
 
 <a name="objectives"></a>
 # Objective of the POC 
-This playbook demonstrates a mock virus attack against an unprotected VM resource using a benign test virus file designed to trigger antimalware tools.  After performing steps to protect the VM, the attack will be reattempted to show the protection operations. 
+This playbook demonstrates a mock virus attack against an unprotected VM resource using a benign test virus file designed to trigger antimalware tools.  After enabling the configuration to protect the VM, the attack will be reattempted to show the protection against virus attack.
 
 <a name="overview"></a>
 # Overview
@@ -37,7 +36,7 @@ It showcases following use cases
 # Important Notes <a name="notes"></a>
 Although the deployment takes 10-15mins, the log aggregation by OMS take a few hours to get configured in the backend. You may not see attack/mitigation logs for detection and prevention events during the aggregation time window.   
 Subsequently logs will take 10-15 mins to reflect in OMS.
-
+<p>Current powershell version in Azure cloudshell is in preview mode.</p>
 
 
 <a name="prerequisites"></a>
@@ -62,7 +61,7 @@ Attack on VM without an Endpoint Protection.
 3. On Properties Page --> Click Connect to Download RDP file --> Save and Open RDP file.
 ![](images/access-vm-0.png)
 
-4. Enter login details (The VM login username and password given during deployment)
+4. Enter login details (The VM login username and password is in deployment powershell output)
 
 5. Open Server Manager and Disable Internet Explorer Enhanced Security Configuration.
 ![](images/disable-internet-explorer-enhanced-security-configuration.png)
@@ -89,7 +88,7 @@ Azure Security Center gives you recommendations and also allows you to perform r
 <a name="detect"></a>
 # Attack & Detection
 
-Anti-malware Extension (Endpoint Protection) might take 5-10 mins to get installed on a VM. Hence, you will use another VM with name "vm-with-ep" which already has Anti-malware extension installed. Further for our demo login using credential given during deployment.
+Anti-malware Extension (Endpoint Protection) might take 5-10 mins to get installed on a VM. Hence, you will use another VM with name "vm-with-ep" which already has Anti-malware extension installed further for our Demo using loginid and pwd (The VM login username and password is in deployment powershell output)
 
 To perform attack open Internet Explorer and Download (https://secure.eicar.org/eicar.com.txt)
 
@@ -134,18 +133,8 @@ You will notice events related to Quarantined items. It might take few minutes f
 
 * Cloudneeti is available on the Azure marketplace. Try out the free test drive here https://aka.ms/Cloudneeti 
 
-<a name="teardown"></a>
-## Teardown Deployment 
+References -
 
-Run following powershell command after login to subscription to clear all the resources deployed during the demo. Specify resource group name given during deployment
- 
- `Remove-AzureRmResourceGroup -Name <ResourceGroupName>  -Force `
- 
-    
-Verification steps -
-1. Login to Azure Portal / Subscription
-2. Check if resource group name given during deployment is cleared.
-<p/>
 
 ##### References -
 
@@ -153,10 +142,7 @@ http://www.eicar.org/
 
 https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware
 
-https://docs.microsoft.com/en-us/azure/monitoring/
-
-
-
+https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview
 
 ## Disclaimer & Acknowledgements 
 
@@ -168,4 +154,3 @@ AVYAN MAKE NO WARRANTIES, EXPRESS, IMPLIED, OR STATUTORY, AS TO THE INFORMATION 
 *	Certain recommendations in this solution may result in increased data, network, or compute resource usage in Azure. The solution may increase a customer’s Azure license or subscription costs.
 *	The solution in this document is intended as reference samples and must not be used as-is for production purposes. Recommending that the customer’s consult with their internal SOC / Operations teams for using specific or all parts of the solutions.
 *	All customer names, transaction records, and any related data on this page are fictitious, created for the purpose of this architecture, and provided for illustration only. No real association or connection is intended, and none should be inferred. 
-* These repositories are in the process of getting merged to https://github.com/Azure/azure-quickstart-templates . Until that time, you can continue referring this repository
